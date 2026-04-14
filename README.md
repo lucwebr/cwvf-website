@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weber Website
 
-## Getting Started
+MVP-Website für Weber Versicherungs- & Finanzkonzepte auf Basis von `Next 16`, `React 19` und `Tailwind 4`.
 
-First, run the development server:
+## Enthalten
+
+- deutschsprachige Marketing-Seite mit Startseite, Leistungen, Über uns, FAQ, Kontakt, Impressum und Datenschutz
+- gemeinsame Content-Abstraktion mit lokalem Fallback und Strapi-kompatibler Fetch-Schicht
+- vorbereiteter Consent-Banner
+- SEO-Basis mit `metadata`, `robots`, `sitemap` und dynamischem OG-Bild
+- Revalidation-Endpoint für spätere CMS-Webhooks
+- Strapi-Schema-Scaffold unter [`cms/strapi`](/Users/lucaweber/cwvf-website/cms/strapi/README.md)
+
+## Lokale Entwicklung
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Wichtige Checks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Kontaktformular
 
-## Learn More
+Das Kontaktformular auf [`/kontakt`](/Users/lucaweber/cwvf-website/app/kontakt/page.tsx) versendet Anfragen per Resend.
 
-To learn more about Next.js, take a look at the following resources:
+Dafür werden diese Variablen benötigt:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL` optional, Standard ist `info@cwvf.de`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Strapi-Anbindung
 
-## Deploy on Vercel
+Ohne CMS läuft die Website mit lokalem Fallback-Content aus [`lib/content/fallback-data.ts`](/Users/lucaweber/cwvf-website/lib/content/fallback-data.ts).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Für eine echte Strapi-Anbindung:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Self-hosted Strapi bereitstellen.
+2. Content-Typen gemäß [`cms/strapi`](/Users/lucaweber/cwvf-website/cms/strapi/README.md) anlegen.
+3. Variablen aus [`.env.example`](/Users/lucaweber/cwvf-website/.env.example) setzen.
+4. Optional einen Webhook auf `/api/revalidate` konfigurieren.
+
+## Hinweis zu Rechtstexten und Referenzen
+
+Impressum, Datenschutz und Testimonials sind im aktuellen Stand bewusst als Projekt-/Placeholder-Grundgerüst formuliert und müssen vor einem Livegang mit echten, freigegebenen Daten ersetzt werden.

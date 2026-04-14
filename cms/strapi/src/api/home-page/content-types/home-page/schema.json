@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "eyebrow": { "type": "string", "required": true },
+    "title": { "type": "string", "required": true },
+    "intro": { "type": "text", "required": true },
+    "trustHighlights": { "type": "json", "required": true },
+    "featuredServiceSlugs": { "type": "json", "required": true },
+    "advisoryPrinciples": { "type": "json", "required": true },
+    "processSteps": { "type": "json", "required": true },
+    "seo": { "type": "json", "required": true }
+  }
+}

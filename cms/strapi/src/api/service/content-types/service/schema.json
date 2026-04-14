@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "title": { "type": "string", "required": true },
+    "shortTitle": { "type": "string", "required": true },
+    "kicker": { "type": "string", "required": true },
+    "summary": { "type": "text", "required": true },
+    "heroText": { "type": "text", "required": true },
+    "audience": { "type": "text", "required": true },
+    "highlights": { "type": "json", "required": true },
+    "benefits": { "type": "json", "required": true },
+    "process": { "type": "json", "required": true },
+    "seo": { "type": "json", "required": true },
+    "faqSlugs": { "type": "json", "required": true }
+  }
+}

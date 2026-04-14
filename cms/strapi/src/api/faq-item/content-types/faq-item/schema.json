@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faq_items",
+  "info": {
+    "singularName": "faq-item",
+    "pluralName": "faq-items",
+    "displayName": "FAQ Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "uid", "targetField": "question", "required": true },
+    "question": { "type": "string", "required": true },
+    "answer": { "type": "text", "required": true },
+    "category": { "type": "string", "required": true }
+  }
+}

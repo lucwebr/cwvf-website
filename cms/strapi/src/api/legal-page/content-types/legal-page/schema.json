@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legal_pages",
+  "info": {
+    "singularName": "legal-page",
+    "pluralName": "legal-pages",
+    "displayName": "Legal Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "title": { "type": "string", "required": true },
+    "intro": { "type": "text", "required": true },
+    "sections": { "type": "json", "required": true },
+    "seo": { "type": "json", "required": true }
+  }
+}
