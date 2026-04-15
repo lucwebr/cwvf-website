@@ -45,7 +45,7 @@ export default async function RootLayout({
         <div className="relative flex min-h-full flex-col overflow-x-clip">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top,_rgba(162,185,203,0.34),_transparent_45%),linear-gradient(180deg,_#f4efe8,_#f8f4ee_48%,_#f5f7fb)]"
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top,_rgba(162,185,203,0.2),_transparent_46%),linear-gradient(180deg,_#f4efe8,_#f8f4ee_54%,_#f8f4ee)]"
           />
           <SiteHeader settings={siteSettings} />
           <main className="flex-1">{children}</main>

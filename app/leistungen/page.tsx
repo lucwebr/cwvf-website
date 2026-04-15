@@ -43,7 +43,7 @@ export default async function ServicesPage() {
             {services.map((service) => (
               <article
                 key={service.slug}
-                className="rounded-[1.75rem] border border-border-soft bg-white/82 p-6 shadow-[var(--shadow-card-soft)] backdrop-blur"
+                className="flex h-full flex-col rounded-[1.75rem] border border-border-soft bg-white/82 p-6 shadow-[var(--shadow-card-soft)] backdrop-blur"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-accent">
                   {service.kicker}
@@ -65,13 +65,14 @@ export default async function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <ButtonLink
-                  className="mt-8"
-                  href={`/leistungen/${service.slug}`}
-                  variant="secondary"
-                >
-                  Detailseite öffnen
-                </ButtonLink>
+                <div className="mt-auto pt-8">
+                  <ButtonLink
+                    href={`/leistungen/${service.slug}`}
+                    variant="secondary"
+                  >
+                    Detailseite öffnen
+                  </ButtonLink>
+                </div>
               </article>
             ))}
           </div>

@@ -144,7 +144,7 @@ export default async function Home() {
             {featuredServices.map((service) => (
               <article
                 key={service.slug}
-                className="rounded-[1.75rem] border border-border-soft bg-white/78 p-6 shadow-[var(--shadow-card)] backdrop-blur"
+                className="flex h-full flex-col rounded-[1.75rem] border border-border-soft bg-white/78 p-6 shadow-[var(--shadow-card)] backdrop-blur"
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-accent">
                   {service.shortTitle}
@@ -163,12 +163,14 @@ export default async function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  className="mt-8 inline-flex items-center text-sm font-semibold text-brand-accent hover:text-brand-ink"
-                  href={`/leistungen/${service.slug}`}
-                >
-                  Mehr zu {service.shortTitle}
-                </Link>
+                <div className="mt-auto pt-8">
+                  <Link
+                    className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-brand-ink px-5 py-3 text-center text-sm font-semibold text-white shadow-[var(--shadow-pill-strong)] hover:-translate-y-0.5 hover:bg-foreground"
+                    href={`/leistungen/${service.slug}`}
+                  >
+                    Mehr zu {service.shortTitle}
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
