@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { StructuredData } from "@/components/structured-data";
 import { getSiteContent } from "@/lib/content";
 import { buildMetadata, getFaqJsonLd } from "@/lib/content/metadata";
@@ -19,13 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function FaqPage() {
   const { faqs } = await getSiteContent();
-  const groupedFaqs = Object.entries(
-    faqs.reduce<Record<string, typeof faqs>>((groups, faq) => {
-      groups[faq.category] ??= [];
-      groups[faq.category].push(faq);
-      return groups;
-    }, {}),
-  );
 
   return (
     <>
@@ -34,7 +28,7 @@ export default async function FaqPage() {
       <PageHero
         actions={[
           {
-            href: "/#kontakt",
+            href: "/kontakt",
             label: "Kontakt aufnehmen",
             variant: "primary",
           },
@@ -44,34 +38,40 @@ export default async function FaqPage() {
         title="Häufige Fragen zur Zusammenarbeit"
       />
 
-      <section className="px-6 py-8 md:px-10 md:pb-20">
-        <div className="mx-auto max-w-[88rem] space-y-8">
-          {groupedFaqs.map(([category, items]) => (
-            <section
-              key={category}
-              className="rounded-[1.85rem] border border-border-soft bg-white/78 p-6 shadow-[var(--shadow-card)] backdrop-blur md:p-8"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-accent">
-                {category}
+      <section className="px-6 py-12 md:px-10 md:pb-20">
+        <ScrollReveal className="mx-auto max-w-[88rem]" delay={40}>
+          <div className="grid gap-10 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
+            <div className="pt-3">
+              <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">
+                Antworten
               </p>
-              <div className="mt-6 grid gap-4 lg:grid-cols-2">
-                {items.map((faq) => (
-                  <details
-                    key={faq.slug}
-                    className="rounded-[1.4rem] border border-border-soft bg-surface/78 px-5 py-4"
-                    open={faq.slug === "beratung-kosten"}
-                  >
-                    <summary className="flex cursor-pointer items-center justify-between gap-4 font-semibold text-brand-ink">
+            </div>
+
+            <div className="border-t border-border-soft">
+              {faqs.map((faq, index) => (
+                <details key={faq.slug} className="border-b border-border-soft" open={index === 0}>
+                  <summary className="grid cursor-pointer gap-5 px-0 py-6 lg:grid-cols-[180px_minmax(0,1fr)_36px] lg:items-start">
+                    <span className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-brand-accent">
+                      {faq.category}
+                    </span>
+                    <span className="text-[1.12rem] font-semibold leading-8 text-brand-ink">
                       {faq.question}
-                      <span className="text-brand-accent">+</span>
-                    </summary>
-                    <p className="mt-3 text-sm leading-7 text-muted">{faq.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
+                    </span>
+                    <span className="flex h-7 w-7 items-center justify-center border border-border-soft text-brand-ink">
+                      {index === 0 ? "−" : "+"}
+                    </span>
+                  </summary>
+                  <div className="grid gap-5 px-0 pb-6 lg:grid-cols-[180px_minmax(0,1fr)]">
+                    <span />
+                    <p className="max-w-4xl text-[1.02rem] leading-8 text-muted">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
       </section>
     </>
   );

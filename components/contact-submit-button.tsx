@@ -7,11 +7,11 @@ export function ContactSubmitButton() {
 
   return (
     <button
-      className="inline-flex w-full items-center justify-center rounded-full bg-brand-ink px-5 py-3.5 text-sm font-semibold text-white shadow-[var(--shadow-pill-strong)] transition hover:-translate-y-0.5 hover:bg-[#0f119c] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+      className="inline-flex min-h-11 items-center justify-center border border-brand-ink bg-brand-ink px-5 text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-white transition hover:border-[#203650] hover:bg-[#203650] disabled:cursor-not-allowed disabled:opacity-70"
       disabled={pending}
       type="submit"
     >
-      {pending ? "Kontaktwunsch wird versendet..." : "Kontaktwunsch absenden"}
+      {pending ? "Anfrage wird gesendet ..." : "Anfrage senden"}
     </button>
   );
 }

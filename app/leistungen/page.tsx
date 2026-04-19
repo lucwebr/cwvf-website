@@ -1,10 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { ButtonLink } from "@/components/button-link";
 import { PageHero } from "@/components/page-hero";
-import { SectionHeading } from "@/components/section-heading";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { getSiteContent } from "@/lib/content";
 import { buildMetadata } from "@/lib/content/metadata";
-import { ButtonLink } from "@/components/button-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { siteSettings } = await getSiteContent();
@@ -20,145 +20,151 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ServicesPage() {
-  const { services, homePage, siteSettings } = await getSiteContent();
+  const { services, siteSettings } = await getSiteContent();
 
   return (
     <>
       <PageHero
-        actions={[siteSettings.primaryCta]}
+        actions={[
+          {
+            href: siteSettings.primaryCta.href,
+            label: "Kontakt aufnehmen",
+            variant: "primary",
+          },
+        ]}
         eyebrow="Leistungen"
         intro="Unsere Beratung bündelt drei Themenfelder, die sich im Alltag gegenseitig beeinflussen: Schutz, Zukunftsplanung und langfristiger Vermögensaufbau."
         title="Versicherung, Vorsorge und Vermögensaufbau greifen ineinander."
       />
 
-      <section className="px-6 py-8 md:px-10">
-        <div className="mx-auto max-w-[88rem]">
-          <SectionHeading
-            eyebrow="Beratungsschwerpunkte"
-            title="Drei Säulen für eine stabile Finanz- und Risikoarchitektur"
-            body="Die einzelnen Themen können separat starten, entfalten aber ihre größte Wirkung, wenn sie zusammen betrachtet und priorisiert werden."
-          />
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {services.map((service) => (
-              <article
-                key={service.slug}
-                className="flex h-full flex-col rounded-[1.75rem] border border-border-soft bg-white/82 p-6 shadow-[var(--shadow-card-soft)] backdrop-blur"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-accent">
-                  {service.kicker}
-                </p>
-                <h2 className="mt-4 font-display text-3xl text-brand-ink">
-                  {service.title}
-                </h2>
-                <p className="mt-4 text-sm leading-7 text-muted">
-                  {service.summary}
-                </p>
-                <div className="mt-6 rounded-[1.4rem] border border-border-soft bg-surface/78 px-4 py-4 text-sm leading-7 text-brand-ink">
-                  {service.audience}
-                </div>
-                <ul className="mt-6 space-y-3 text-sm leading-7 text-brand-ink">
-                  {service.benefits.map((benefit) => (
-                    <li key={benefit} className="flex gap-3">
-                      <span className="mt-2 h-2.5 w-2.5 rounded-full bg-brand-highlight" />
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-8">
-                  <ButtonLink
-                    href={`/leistungen/${service.slug}`}
-                    variant="secondary"
-                  >
-                    Detailseite öffnen
-                  </ButtonLink>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-4 md:px-10 md:py-8">
-        <div className="mx-auto max-w-[88rem] rounded-[2rem] border border-border-soft bg-white/82 p-6 shadow-[var(--shadow-card)] backdrop-blur md:p-8">
-          <div className="grid gap-8 lg:grid-cols-[0.98fr_1.02fr] lg:items-start">
-            <div>
-              <SectionHeading
-                eyebrow="Versichererzugang"
-                title="Breiter Zugriff auf eine große Auswahl an Versicherungsgesellschaften"
-                body="Über IGAL und den Partner vfm Service steht uns eine sehr breite Produktpalette offen. Damit können wir je nach Bedarf passende Lösungen aus vielen Gesellschaften gegenüberstellen und nicht nur auf einzelne Anbieter zurückgreifen."
-              />
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                {[
-                  "Mehr als 100 Versicherungsgesellschaften im Zugriff",
-                  "Premiumpartner wie Alte Leipziger, Hallesche und Itzehoer",
-                  "Zusätzliche Produktauswahl über den Partner vfm Service",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-[1.4rem] border border-border-soft bg-surface/78 px-4 py-4 text-sm leading-7 text-brand-ink"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <ButtonLink href="/partner/pp-plakat-igal.pdf" variant="secondary">
-                  Plakat als PDF öffnen
-                </ButtonLink>
-                <ButtonLink href="/#kontakt">Kontakt aufnehmen</ButtonLink>
-              </div>
+      <section className="border-y border-border-soft bg-[#efe6d9] px-6 py-16 md:px-10 md:py-20">
+        <ScrollReveal className="mx-auto max-w-[88rem]" delay={40}>
+          <div className="grid gap-8 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-14">
+            <div className="pt-3">
+              <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">
+                Beratungsschwerpunkte
+              </p>
             </div>
 
-            <a
-              className="block overflow-hidden rounded-[1.75rem] border border-border-soft bg-surface shadow-[var(--shadow-card-soft)]"
-              href="/partner/pp-plakat-igal.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                alt="Partnerplakat mit Auswahl an Versicherungsgesellschaften über IGAL und vfm"
-                className="h-auto w-full"
-                height={2000}
-                priority={false}
-                src="/partner/pp-plakat-igal.png"
-                width={1414}
-              />
-            </a>
+            <div>
+              <h2 className="max-w-[12ch] font-display text-[clamp(2.7rem,4.5vw,4.55rem)] leading-[1] tracking-[-0.04em] text-brand-ink">
+                Drei Säulen für eine stabile Finanz- und Risikoarchitektur.
+              </h2>
+              <p className="mt-6 max-w-3xl text-[1.04rem] leading-8 text-muted">
+                Die einzelnen Themen können separat starten, entfalten aber ihre
+                größte Wirkung, wenn sie zusammen betrachtet und priorisiert
+                werden.
+              </p>
+
+              <div className="mt-14">
+                {services.map((service, index) => (
+                  <article
+                    key={service.slug}
+                    className="grid gap-8 border-t border-border-soft py-10 lg:grid-cols-[90px_minmax(0,1fr)_minmax(0,0.88fr)] lg:gap-10"
+                  >
+                    <p className="pt-2 text-[0.88rem] leading-7 text-muted">
+                      {`0${index + 1}`}
+                    </p>
+                    <div>
+                      <p className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-brand-accent">
+                        {service.kicker}
+                      </p>
+                      <h3 className="mt-4 font-display text-[clamp(2.2rem,3.2vw,3.3rem)] leading-[1] tracking-[-0.03em] text-brand-ink">
+                        {service.title}
+                      </h3>
+                      <p className="mt-4 max-w-2xl text-[1.02rem] leading-8 text-muted">
+                        {service.heroText}
+                      </p>
+                      <p className="mt-6 max-w-2xl text-[1rem] leading-8 text-brand-ink">
+                        {service.audience}
+                      </p>
+                    </div>
+
+                    <div className="flex h-full flex-col pt-1 text-sm leading-7 text-muted">
+                      <div className="grid gap-3">
+                      {service.benefits.map((benefit) => (
+                        <p key={benefit} className="flex gap-3">
+                          <span className="mt-[0.78rem] h-1.5 w-1.5 rounded-full bg-brand-highlight" />
+                          <span>{benefit}</span>
+                        </p>
+                      ))}
+                      </div>
+                      <div className="mt-auto pt-6">
+                        <ButtonLink
+                          className="min-w-[13.5rem]"
+                          href={`/leistungen/${service.slug}`}
+                          variant="secondary"
+                        >
+                          Detailseite öffnen →
+                        </ButtonLink>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="px-6 py-10 md:px-10 md:pb-20">
-        <div className="mx-auto max-w-[88rem] rounded-[2rem] border border-border-soft bg-brand-ink px-6 py-8 text-white shadow-[var(--shadow-panel)] md:px-8">
-          <SectionHeading
-            eyebrow="Zusammenarbeit"
-            title="Der gleiche Beratungsrahmen trägt über alle Themen hinweg."
-            body="Unabhängig vom Einstiegspunkt bleiben Übersicht, Priorisierung und nachvollziehbare Empfehlungen der gemeinsame Standard."
-            tone="inverse"
-          />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {homePage.processSteps.map((step, index) => (
-              <div
-                key={step.title}
-                className="rounded-[1.5rem] border border-white/10 bg-white/6 px-5 py-5"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-highlight">
-                  Schritt {index + 1}
+      <section className="px-6 py-16 md:px-10 md:py-20">
+        <ScrollReveal className="mx-auto max-w-[88rem] border-b border-border-soft pb-16" delay={70}>
+          <div className="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-14">
+            <div className="pt-3">
+              <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">
+                Versichererzugang
+              </p>
+            </div>
+
+            <div className="grid gap-10 xl:grid-cols-[minmax(0,0.64fr)_minmax(0,1.36fr)] xl:items-start">
+              <div className="min-w-0">
+                <h2 className="max-w-[10ch] text-balance font-display text-[clamp(2.25rem,3.4vw,3.7rem)] leading-[1.02] tracking-[-0.035em] text-brand-ink">
+                  Breiter Zugriff auf eine große Auswahl an
+                  Versicherungsgesellschaften.
+                </h2>
+                <p className="mt-6 max-w-2xl text-[1.02rem] leading-8 text-muted">
+                  Über IGAL und den Partner vfm Service steht uns eine breite
+                  Produktpalette offen. Damit können wir je nach Bedarf passende
+                  Lösungen aus vielen Gesellschaften gegenüberstellen.
                 </p>
-                <h3 className="mt-3 text-lg font-semibold text-white">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-white/80">
-                  {step.description}
-                </p>
+                <div className="mt-8 space-y-4 border-t border-border-soft pt-6 text-sm leading-7 text-muted">
+                  {[
+                    "Mehr als 100 Versicherungsgesellschaften im Zugriff",
+                    "Premiumpartner wie Alte Leipziger, Hallesche und Itzehoer",
+                    "Zusätzliche Produktauswahl über den Partner vfm Service",
+                  ].map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+                <div className="mt-8 flex flex-wrap gap-5">
+                  <ButtonLink href="/partner/pp-plakat-igal.pdf">
+                    Plakat als PDF öffnen
+                  </ButtonLink>
+                  <ButtonLink href="/kontakt" variant="ghost">
+                    Kontakt aufnehmen →
+                  </ButtonLink>
+                </div>
               </div>
-            ))}
+
+              <a
+                className="block self-start overflow-hidden border border-border-soft bg-[#f3ede3]"
+                href="/partner/pp-plakat-igal.pdf"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <Image
+                  alt="Partnerplakat mit Auswahl an Versicherungsgesellschaften über IGAL und vfm"
+                  className="h-auto w-full"
+                  height={2000}
+                  src="/partner/pp-plakat-igal.png"
+                  width={1414}
+                />
+              </a>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
+
     </>
   );
 }

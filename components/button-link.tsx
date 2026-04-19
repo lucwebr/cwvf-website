@@ -8,13 +8,16 @@ type ButtonLinkProps = {
   className?: string;
 };
 
-const variantClasses: Record<NonNullable<ButtonLinkProps["variant"]>, string> = {
+const variantClasses: Record<
+  NonNullable<ButtonLinkProps["variant"]>,
+  string
+> = {
   primary:
-    "bg-brand-ink text-white shadow-[var(--shadow-pill-strong)] hover:-translate-y-0.5 hover:bg-[#0f119c]",
+    "min-h-10.5 border border-brand-ink bg-brand-ink px-5 text-[0.78rem] font-semibold uppercase tracking-[0.22em] text-white hover:bg-[#203650] hover:border-[#203650]",
   secondary:
-    "border border-brand-ink/12 bg-white/72 text-brand-ink shadow-[var(--shadow-pill)] backdrop-blur hover:-translate-y-0.5 hover:border-brand-accent/22 hover:bg-white/82",
+    "min-h-10.5 border border-border-soft bg-transparent px-5 text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-brand-ink hover:border-brand-ink/24 hover:bg-white/55",
   ghost:
-    "text-brand-accent hover:-translate-y-0.5 hover:text-brand-ink",
+    "px-0 text-[0.96rem] font-semibold tracking-[0.01em] text-brand-accent hover:text-brand-ink",
 };
 
 function isExternal(href: string) {
@@ -37,7 +40,7 @@ export function ButtonLink({
   className,
 }: ButtonLinkProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full px-5 py-3 text-center text-sm font-semibold tracking-[0.01em]",
+    "inline-flex items-center justify-center rounded-none text-center",
     variantClasses[variant],
     className,
   );
