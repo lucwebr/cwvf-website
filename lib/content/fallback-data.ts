@@ -198,6 +198,15 @@ export const fallbackSiteContent: SiteContent = {
         "Bestehende Depots, Sparpläne und freie Liquidität zusammen betrachten",
         "Empfehlung mit realistischen Beiträgen und Überprüfungspunkten festlegen",
       ],
+      partner: {
+        eyebrow: "Partner für Finanzanlagen",
+        title: "FFB als Plattform für Finanzanlagen",
+        description:
+          "Für Finanzanlagen arbeiten wir mit der FIL Fondsbank (FFB) als Partner innerhalb der Fidelity Group. Damit lassen sich Depotlösungen, Sparpläne und bestehende Anlagebausteine in einer strukturierten Plattformumgebung abbilden.",
+        href: "https://www.ffb.de",
+        logoSrc: "/partner/ffb-fidelity-group-rgb.png",
+        logoAlt: "FFB Fidelity Group Logo",
+      },
       seo: {
         title: "Beratung für Vermögensaufbau",
         description:

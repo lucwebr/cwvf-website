@@ -8,6 +8,7 @@ type PageHeroProps = {
   intro: string;
   actions?: ActionLink[];
   variant?: "card" | "plain";
+  showBorder?: boolean;
 };
 
 export function PageHero({
@@ -16,6 +17,7 @@ export function PageHero({
   intro,
   actions = [],
   variant = "card",
+  showBorder = true,
 }: PageHeroProps) {
   const compact = variant === "plain";
 
@@ -24,7 +26,7 @@ export function PageHero({
       className={`bg-background px-6 md:px-10 ${compact ? "pb-10 pt-14 md:pt-16" : "pb-14 pt-16 md:pb-16 md:pt-20"}`}
     >
       <ScrollReveal
-        className={`mx-auto max-w-[88rem] border-b border-border-soft ${compact ? "pb-10" : "pb-14"}`}
+        className={`mx-auto max-w-[88rem] ${showBorder ? "border-b border-border-soft" : ""} ${compact ? "pb-10" : "pb-14"}`}
       >
         <div className="grid gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14">
           <div className="pt-3">
@@ -34,9 +36,9 @@ export function PageHero({
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:items-end lg:gap-10">
-            <div>
-              <h1 className="max-w-[10ch] font-display text-[clamp(3rem,5.4vw,5.6rem)] leading-[0.96] tracking-[-0.048em] text-brand-ink">
+          <div className="grid gap-8 lg:grid-cols-[minmax(24rem,1.28fr)_minmax(20rem,0.72fr)] lg:items-center lg:gap-12 xl:grid-cols-[minmax(30rem,1.42fr)_minmax(22rem,0.58fr)]">
+            <div className="min-w-0">
+              <h1 className="max-w-[9ch] text-balance font-display text-[clamp(3rem,5.4vw,5.6rem)] leading-[0.96] tracking-[-0.048em] text-brand-ink">
                 {title}
               </h1>
             </div>

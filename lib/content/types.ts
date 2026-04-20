@@ -75,6 +75,14 @@ export type Service = {
   highlights: string[];
   benefits: string[];
   process: string[];
+  partner?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    logoSrc: string;
+    logoAlt: string;
+    href?: string;
+  };
   seo: SeoConfig;
   faqSlugs: string[];
 };

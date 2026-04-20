@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/button-link";
@@ -119,6 +120,64 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <div className="grid gap-10 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
             <div className="pt-3">
               <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">
+                {service.partner ? service.partner.eyebrow : "Vorgehen"}
+              </p>
+            </div>
+
+            {service.partner ? (
+              <div className="grid gap-10 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] xl:items-center xl:gap-14">
+                <div>
+                  <h2 className="max-w-[12ch] font-display text-[clamp(2.4rem,3.8vw,4rem)] leading-[1.02] tracking-[-0.035em] text-brand-ink">
+                    {service.partner.title}
+                  </h2>
+                  <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-muted">
+                    {service.partner.description}
+                  </p>
+                </div>
+
+                <div className="flex w-full">
+                  <a
+                    className="block w-full max-w-[27.25rem] transition hover:-translate-y-0.5"
+                    href={service.partner.href ?? "#"}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <Image
+                      alt={service.partner.logoAlt}
+                      className="h-auto w-full object-contain"
+                      height={480}
+                      src={service.partner.logoSrc}
+                      width={1239}
+                    />
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="border-t border-border-soft">
+                {service.process.map((step, index) => (
+                  <div
+                    key={step}
+                    className="grid gap-8 border-b border-border-soft py-8 lg:grid-cols-[80px_minmax(0,1fr)]"
+                  >
+                    <p className="pt-1 text-[0.88rem] leading-7 text-muted">
+                      {`0${index + 1}`}
+                    </p>
+                    <p className="max-w-4xl text-[1.06rem] leading-8 text-brand-ink">
+                      {step}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </ScrollReveal>
+      </section>
+
+      <section className={`${service.partner ? "bg-[#f4efe6]" : "bg-[#e9eff4]"} px-6 py-16 md:px-10 md:py-20`}>
+        <ScrollReveal className="mx-auto max-w-[88rem]" delay={service.partner ? 100 : 100}>
+          <div className="grid gap-10 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
+            <div className="pt-3">
+              <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">
                 Vorgehen
               </p>
             </div>
@@ -143,7 +202,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </section>
 
       <section className="bg-[#e9eff4] px-6 py-16 md:px-10 md:py-20">
-        <ScrollReveal className="mx-auto max-w-[88rem]" delay={100}>
+        <ScrollReveal className="mx-auto max-w-[88rem]" delay={115}>
           <div className="grid gap-10 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
             <div className="pt-3">
               <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">

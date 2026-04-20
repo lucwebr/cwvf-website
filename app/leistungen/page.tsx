@@ -118,9 +118,8 @@ export default async function ServicesPage() {
 
             <div className="grid gap-10 xl:grid-cols-[minmax(0,0.64fr)_minmax(0,1.36fr)] xl:items-start">
               <div className="min-w-0">
-                <h2 className="max-w-[10ch] text-balance font-display text-[clamp(2.25rem,3.4vw,3.7rem)] leading-[1.02] tracking-[-0.035em] text-brand-ink">
-                  Breiter Zugriff auf eine große Auswahl an
-                  Versicherungsgesellschaften.
+                <h2 className="max-w-[12ch] text-balance font-display text-[clamp(2.25rem,3.4vw,3.7rem)] leading-[1.02] tracking-[-0.035em] text-brand-ink">
+                  Breiter Zugriff auf eine große Auswahl an Versicherern.
                 </h2>
                 <p className="mt-6 max-w-2xl text-[1.02rem] leading-8 text-muted">
                   Über IGAL und den Partner vfm Service steht uns eine breite

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { ContactForm } from "@/components/contact-form";
@@ -181,20 +182,39 @@ export default async function Home() {
             </div>
 
             <div>
-              <h2 className="max-w-4xl font-display text-[clamp(3rem,5vw,5rem)] leading-[1] tracking-[-0.045em] text-brand-ink">
-                Verifizierte Bewertungen über eKomi.
-              </h2>
-              <p className="mt-5 text-[1.02rem] leading-8 text-muted">
-                {homePage.reviewSummary.totalReviews} Bewertungen ·{" "}
-                {homePage.reviewSummary.ratingLabel} von 5 ·{" "}
-                {homePage.reviewSummary.award} · {homePage.reviewSummary.updatedLabel}
-              </p>
+              <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_16rem] xl:items-start xl:gap-10">
+                <div>
+                  <h2 className="max-w-4xl font-display text-[clamp(3rem,5vw,5rem)] leading-[1] tracking-[-0.045em] text-brand-ink">
+                    Verifizierte Bewertungen über eKomi.
+                  </h2>
+                  <p className="mt-5 text-[1.02rem] leading-8 text-muted">
+                    {homePage.reviewSummary.totalReviews} Bewertungen ·{" "}
+                    {homePage.reviewSummary.ratingLabel} von 5 ·{" "}
+                    {homePage.reviewSummary.award} · {homePage.reviewSummary.updatedLabel}
+                  </p>
+                </div>
 
-              <div className="mt-12 grid gap-8 lg:grid-cols-3">
+                <a
+                  className="block h-[11rem] w-[11rem] transition hover:-translate-y-0.5 xl:mt-2 xl:justify-self-end"
+                  href={homePage.reviewSummary.sourceUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    alt="eKomi Gold-Siegel"
+                    className="h-full w-full object-contain"
+                    height={240}
+                    src="/ekomi-logo.png"
+                    width={240}
+                  />
+                </a>
+              </div>
+
+              <div className="mt-10 grid gap-8 lg:grid-cols-3">
                 {leadTestimonials.map((testimonial) => (
                   <article
                     key={`${testimonial.authorName}-${testimonial.quote}`}
-                    className="flex h-full min-h-[22rem] flex-col"
+                    className="flex h-full min-h-[18rem] flex-col"
                   >
                     <p className="text-[1.08rem] leading-9 text-brand-ink">
                       &quot;{testimonial.quote}&quot;
@@ -277,8 +297,8 @@ export default async function Home() {
                   Überblick und einer klaren Priorisierung.
                 </p>
 
-                <div className="mt-12 space-y-7">
-                  <div>
+                <div className="mt-12 border-t border-border-soft/70">
+                  <div className="py-7">
                     <p className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-brand-accent">
                       Telefon
                     </p>
@@ -290,7 +310,7 @@ export default async function Home() {
                     </a>
                   </div>
 
-                  <div>
+                  <div className="border-t border-border-soft/70 py-7">
                     <p className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-brand-accent">
                       E-Mail
                     </p>
@@ -302,7 +322,7 @@ export default async function Home() {
                     </a>
                   </div>
 
-                  <div>
+                  <div className="border-t border-border-soft/70 py-7">
                     <p className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-brand-accent">
                       Büro
                     </p>
@@ -313,7 +333,7 @@ export default async function Home() {
                     </p>
                   </div>
 
-                  <div>
+                  <div className="border-t border-border-soft/70 py-7">
                     <p className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-brand-accent">
                       Beratungszeiten
                     </p>
