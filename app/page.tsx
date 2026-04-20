@@ -46,10 +46,10 @@ export default async function Home() {
 
             <div className="grid gap-14 xl:grid-cols-[minmax(0,1.08fr)_20.5rem] xl:items-end">
               <div>
-                <h1 className="max-w-[8.2ch] font-display text-[clamp(3.6rem,7vw,6.65rem)] leading-[0.94] tracking-[-0.055em] text-brand-ink">
+                <h1 className="max-w-[8.2ch] font-display text-[clamp(3rem,7vw,6.65rem)] leading-[0.94] tracking-[-0.055em] text-brand-ink">
                   {homePage.title}
                 </h1>
-                <p className="mt-9 max-w-[41rem] text-[1.04rem] leading-[2.05] text-muted">
+                <p className="mt-7 max-w-[41rem] text-[1rem] leading-8 text-muted md:mt-9 md:text-[1.04rem] md:leading-[2.05]">
                   {homePage.intro}
                 </p>
                 <div className="mt-10 flex flex-wrap items-center gap-5">
@@ -66,7 +66,7 @@ export default async function Home() {
                 <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-highlight">
                   {homePage.reviewSummary.provider} Gold-Siegel
                 </p>
-                <p className="mt-5 font-display text-[3.7rem] leading-none tracking-[-0.04em] text-brand-ink">
+                <p className="mt-5 font-display text-[clamp(3rem,10vw,3.7rem)] leading-none tracking-[-0.04em] text-brand-ink">
                   {homePage.reviewSummary.ratingLabel}
                 </p>
                 <p className="mt-4 text-[0.96rem] leading-7 text-muted">
@@ -195,7 +195,7 @@ export default async function Home() {
                 </div>
 
                 <a
-                  className="block h-[11rem] w-[11rem] transition hover:-translate-y-0.5 xl:mt-2 xl:justify-self-end"
+                  className="block h-[8.5rem] w-[8.5rem] transition hover:-translate-y-0.5 xl:mt-2 xl:h-[11rem] xl:w-[11rem] xl:justify-self-end"
                   href={homePage.reviewSummary.sourceUrl}
                   rel="noreferrer"
                   target="_blank"
@@ -214,7 +214,7 @@ export default async function Home() {
                 {leadTestimonials.map((testimonial) => (
                   <article
                     key={`${testimonial.authorName}-${testimonial.quote}`}
-                    className="flex h-full min-h-[18rem] flex-col"
+                    className="flex h-full min-h-0 flex-col md:min-h-[18rem]"
                   >
                     <p className="text-[1.08rem] leading-9 text-brand-ink">
                       &quot;{testimonial.quote}&quot;
@@ -303,7 +303,7 @@ export default async function Home() {
                       Telefon
                     </p>
                     <a
-                      className="mt-3 block text-5xl font-display leading-none text-brand-ink hover:text-brand-accent"
+                      className="mt-3 block text-[2.9rem] font-display leading-none text-brand-ink hover:text-brand-accent md:text-[5rem]"
                       href={`tel:${siteSettings.phone}`}
                     >
                       {siteSettings.phoneDisplay}

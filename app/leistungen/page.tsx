@@ -91,7 +91,7 @@ export default async function ServicesPage() {
                       </div>
                       <div className="mt-auto pt-6">
                         <ButtonLink
-                          className="min-w-[13.5rem]"
+                          className="sm:min-w-[13.5rem]"
                           href={`/leistungen/${service.slug}`}
                           variant="secondary"
                         >

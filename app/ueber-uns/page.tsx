@@ -34,7 +34,7 @@ export default async function AboutPage() {
 
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] lg:items-end lg:gap-10">
               <div>
-                <h1 className="max-w-[8.2ch] font-display text-[clamp(3.2rem,5.8vw,5.85rem)] leading-[0.96] tracking-[-0.05em] text-brand-ink">
+                <h1 className="max-w-[8.2ch] font-display text-[clamp(2.8rem,5.8vw,5.85rem)] leading-[0.96] tracking-[-0.05em] text-brand-ink">
                   Ein kleines Büro mit festen Ansprechpartnern.
                 </h1>
               </div>
@@ -169,7 +169,7 @@ export default async function AboutPage() {
                     <div className="flex h-12 w-12 items-center justify-center bg-brand-ink text-sm font-semibold uppercase tracking-[0.08em] text-white">
                       {member.initials}
                     </div>
-                    <h2 className="font-display text-[2.25rem] leading-none tracking-[-0.02em] text-brand-ink">
+                    <h2 className="font-display text-[2rem] leading-none tracking-[-0.02em] text-brand-ink md:text-[2.25rem]">
                       {member.name}
                     </h2>
                   </div>

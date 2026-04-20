@@ -67,7 +67,7 @@ export default async function ContactPage() {
                       Telefon
                     </p>
                     <a
-                      className="mt-3 block text-5xl font-display leading-none text-brand-ink hover:text-brand-accent"
+                      className="mt-3 block text-[2.9rem] font-display leading-none text-brand-ink hover:text-brand-accent md:text-[5rem]"
                       href={`tel:${siteSettings.phone}`}
                     >
                       {siteSettings.phoneDisplay}

@@ -135,7 +135,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </p>
                 </div>
 
-                <div className="flex w-full">
+                <div className="flex w-full max-w-2xl lg:max-w-[34rem] lg:justify-self-end">
                   <a
                     className="block w-full max-w-[27.25rem] transition hover:-translate-y-0.5"
                     href={service.partner.href ?? "#"}
