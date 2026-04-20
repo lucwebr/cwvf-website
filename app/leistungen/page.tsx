@@ -21,6 +21,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ServicesPage() {
   const { services, siteSettings } = await getSiteContent();
+  const investmentPartner = services.find(
+    (service) => service.slug === "vermoegensaufbau",
+  )?.partner;
 
   return (
     <>
@@ -163,6 +166,67 @@ export default async function ServicesPage() {
           </div>
         </ScrollReveal>
       </section>
+
+      {investmentPartner ? (
+        <section className="bg-[#f4efe6] px-6 py-16 md:px-10 md:py-20">
+          <ScrollReveal className="mx-auto max-w-[88rem]" delay={90}>
+            <div className="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-14">
+              <div className="pt-3">
+                <p className="text-[0.76rem] font-semibold uppercase tracking-[0.26em] text-brand-accent">
+                  {investmentPartner.eyebrow}
+                </p>
+              </div>
+
+              <div className="grid gap-10 xl:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] xl:items-center">
+                <div className="min-w-0">
+                  <h2 className="max-w-[12ch] text-balance font-display text-[clamp(2.25rem,3.4vw,3.7rem)] leading-[1.02] tracking-[-0.035em] text-brand-ink">
+                    {investmentPartner.title}
+                  </h2>
+                  <p className="mt-6 max-w-2xl text-[1.02rem] leading-8 text-muted">
+                    {investmentPartner.description}
+                  </p>
+                  <div className="mt-8 space-y-4 border-t border-border-soft pt-6 text-sm leading-7 text-muted">
+                    {[
+                      "Depotloesungen und Sparplaene koennen strukturiert gebuendelt werden.",
+                      "Bestehende Anlagebausteine lassen sich in einer Plattformumgebung uebersichtlich einordnen.",
+                      "Der Vermoegensaufbau bleibt mit den uebrigen Finanzthemen abgestimmt und nachvollziehbar.",
+                    ].map((item) => (
+                      <p key={item}>{item}</p>
+                    ))}
+                  </div>
+                  <div className="mt-8 flex flex-wrap gap-5">
+                    <ButtonLink href="/leistungen/vermoegensaufbau">
+                      Mehr zu Vermögensaufbau
+                    </ButtonLink>
+                    {investmentPartner.href ? (
+                      <ButtonLink href={investmentPartner.href} variant="ghost">
+                        Zur FFB Website →
+                      </ButtonLink>
+                    ) : null}
+                  </div>
+                </div>
+
+                <div className="flex w-full items-center justify-start xl:justify-end">
+                  <a
+                    className="block w-full max-w-[28rem] transition hover:-translate-y-0.5"
+                    href={investmentPartner.href ?? "#"}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <Image
+                      alt={investmentPartner.logoAlt}
+                      className="h-auto w-full object-contain"
+                      height={480}
+                      src={investmentPartner.logoSrc}
+                      width={1239}
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+      ) : null}
 
     </>
   );
